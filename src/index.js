@@ -2,5 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "tachyons";
+import Card from "./Card";
 
-ReactDOM.render(<h1>New </h1>, document.getElementById("root"));
+ReactDOM.render(
+  <div>
+    <Card />
+    <Card />
+    <Card />
+  </div>,
+  document.getElementById("root")
+);
