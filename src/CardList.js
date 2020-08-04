@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { robots } from "./Robots";
+
 class CardList extends Component {
   renderList() {
-    return robots.map((robot) => {
+    return this.props.filteredRobots.map((robot) => {
       return (
         <Card
           name={robot.name}

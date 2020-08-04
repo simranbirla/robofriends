@@ -7,6 +7,10 @@ class App extends Component {
 
   onInputChange = (input) => {
     this.setState({ search: input });
+    const filteredRobots = this.state.robots.filter((robot) => {
+      return robot.name.toLowerCase().includes(this.state.search.toLowerCase());
+    });
+    this.setState({ robots: filteredRobots });
   };
 
   render() {
@@ -16,7 +20,7 @@ class App extends Component {
           ROBOT FRIENDS
         </h1>
         <SearchBox className="tc" onInputChange={this.onInputChange} />
-        <CardList search={this.state.search} />
+        <CardList filteredRobots={this.state.robots} />
       </div>
     );
   }
