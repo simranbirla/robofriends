@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
-
+import { robots } from "./Robots";
 class App extends Component {
-  state = { search: "" };
+  state = { search: "", robots: robots };
 
-  onInputChange = (e) => {
-    console.log(e);
+  onInputChange = (input) => {
+    this.setState({ search: input });
   };
 
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           ROBOT FRIENDS
         </h1>
         <SearchBox className="tc" onInputChange={this.onInputChange} />
-        <CardList />
+        <CardList search={this.state.search} />
       </div>
     );
   }
