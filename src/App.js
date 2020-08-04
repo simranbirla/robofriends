@@ -2,25 +2,32 @@ import React, { Component } from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
 import { robots } from "./Robots";
+import Scroll from "./Scroll";
 class App extends Component {
-  state = { search: "", robots: robots };
+  state = { search: "", robots: [] };
+
+  componentDidMount() {
+    this.setState({ robots: robots });
+  }
 
   onInputChange = (input) => {
     this.setState({ search: input });
-    const filteredRobots = this.state.robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(this.state.search.toLowerCase());
-    });
-    this.setState({ robots: filteredRobots });
   };
 
   render() {
+    const filteredRobots = this.state.robots.filter((robot) => {
+      return robot.name.toLowerCase().includes(this.state.search.toLowerCase());
+    });
+
     return (
       <div className="tc">
         <h1 className="tc" style={{ color: "yellowgreen" }}>
           ROBOT FRIENDS
         </h1>
         <SearchBox className="tc" onInputChange={this.onInputChange} />
-        <CardList filteredRobots={this.state.robots} />
+        <Scroll>
+          <CardList filteredRobots={filteredRobots} />
+        </Scroll>
       </div>
     );
   }
