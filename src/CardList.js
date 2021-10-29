@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Card from "./Card";
 
+
+// List of all the cards, api integration
+
+
 class CardList extends Component {
   renderList() {
     return this.props.filteredRobots.map((robot) => {
